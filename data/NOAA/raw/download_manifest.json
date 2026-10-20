@@ -1,0 +1,2126 @@
+[
+  {
+    "station_id": "USW00014897",
+    "name": "WAUSAU ASOS",
+    "latitude": 44.9275,
+    "longitude": -89.6253,
+    "source_url": "https://www.ncei.noaa.gov/pub/data/ghcn/daily/all/USW00014897.dly",
+    "download_date": "2026-10-20",
+    "requested_start": "2004-01-01",
+    "requested_end": "2025-12-31",
+    "filename": "USW00014897_2004_2025.dly",
+    "bytes": 1573020,
+    "monthly_records": 5826,
+    "source_sha256": "0a72fae9a04c5bbd0204a9c05452f5760774ff1250fa708bb3c428a79fd7334f",
+    "delivered_sha256": "7caea4d935399ef384c4168631ca598e8d03deed2637af95dc0b0fc2d3f90c24",
+    "extraction": "Whole original monthly lines selected by year; all available elements and original flags retained; no cleaning, filling, unit conversion, or daily reformatting.",
+    "basic_variable_year_presence": {
+      "TMAX": {
+        "2004": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      },
+      "TMIN": {
+        "2004": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      },
+      "PRCP": {
+        "2004": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      }
+    }
+  },
+  {
+    "station_id": "USC00475364",
+    "name": "MERRILL",
+    "latitude": 45.1786,
+    "longitude": -89.6617,
+    "source_url": "https://www.ncei.noaa.gov/pub/data/ghcn/daily/all/USC00475364.dly",
+    "download_date": "2026-10-20",
+    "requested_start": "2004-01-01",
+    "requested_end": "2025-12-31",
+    "filename": "USC00475364_2004_2025.dly",
+    "bytes": 458460,
+    "monthly_records": 1698,
+    "source_sha256": "adbcbbd01a3c134229f726b13b79d40626b25f1c49a878ab1de145de01b5b016",
+    "delivered_sha256": "d24a975b501d97c160b2fe3117efcbe956a146d5e3dde1d4ec0980d6d60e6d75",
+    "extraction": "Whole original monthly lines selected by year; all available elements and original flags retained; no cleaning, filling, unit conversion, or daily reformatting.",
+    "basic_variable_year_presence": {
+      "TMAX": {
+        "2004": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 355,
+          "unflagged_nonmissing_days": 355,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      },
+      "TMIN": {
+        "2004": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 358,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 363,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 362,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 355,
+          "unflagged_nonmissing_days": 355,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      },
+      "PRCP": {
+        "2004": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      }
+    }
+  },
+  {
+    "station_id": "USC00475120",
+    "name": "MARSHFIELD EXP FARM",
+    "latitude": 44.6411,
+    "longitude": -90.1333,
+    "source_url": "https://www.ncei.noaa.gov/pub/data/ghcn/daily/all/USC00475120.dly",
+    "download_date": "2026-10-20",
+    "requested_start": "2004-01-01",
+    "requested_end": "2025-12-31",
+    "filename": "USC00475120_2004_2025.dly",
+    "bytes": 531360,
+    "monthly_records": 1968,
+    "source_sha256": "62d75de5d5995ea7c4a5ea18a6fff0bd927549378b2320ac899d15d18b79603b",
+    "delivered_sha256": "e4c0d4582607e9b38db496f064ab4050fd0afb775b33fad6dc25af26997caf26",
+    "extraction": "Whole original monthly lines selected by year; all available elements and original flags retained; no cleaning, filling, unit conversion, or daily reformatting.",
+    "basic_variable_year_presence": {
+      "TMAX": {
+        "2004": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 362,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      },
+      "TMIN": {
+        "2004": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 361,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 363,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 362,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      },
+      "PRCP": {
+        "2004": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 362,
+          "unflagged_nonmissing_days": 357,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      }
+    }
+  },
+  {
+    "station_id": "USC00478171",
+    "name": "STEVENS PT",
+    "latitude": 44.5114,
+    "longitude": -89.5853,
+    "source_url": "https://www.ncei.noaa.gov/pub/data/ghcn/daily/all/USC00478171.dly",
+    "download_date": "2026-10-20",
+    "requested_start": "2004-01-01",
+    "requested_end": "2025-12-31",
+    "filename": "USC00478171_2004_2025.dly",
+    "bytes": 505710,
+    "monthly_records": 1873,
+    "source_sha256": "09cfaf1d375760df4d2474d48bbdf7f572a084b0f5c48626ca93762f89eef656",
+    "delivered_sha256": "2ae60a81f9e8a7cedfd20fdfd18d30f2cbfb021d3e668e3c7b8aaaa201ab7047",
+    "extraction": "Whole original monthly lines selected by year; all available elements and original flags retained; no cleaning, filling, unit conversion, or daily reformatting.",
+    "basic_variable_year_presence": {
+      "TMAX": {
+        "2004": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      },
+      "TMIN": {
+        "2004": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 363,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 363,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 363,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      },
+      "PRCP": {
+        "2004": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 363,
+          "unflagged_nonmissing_days": 362,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      }
+    }
+  },
+  {
+    "station_id": "USW00094985",
+    "name": "MARSHFIELD MUNI AP",
+    "latitude": 44.6378,
+    "longitude": -90.1875,
+    "source_url": "https://www.ncei.noaa.gov/pub/data/ghcn/daily/all/USW00094985.dly",
+    "download_date": "2026-10-20",
+    "requested_start": "2004-01-01",
+    "requested_end": "2025-12-31",
+    "filename": "USW00094985_2004_2025.dly",
+    "bytes": 943650,
+    "monthly_records": 3495,
+    "source_sha256": "ad2c8774af8e48b3000c2915362a3fb687efbdca02b22d2ab88f14d692763dd4",
+    "delivered_sha256": "eb6b12b099245aa2d36900d131c887844ea68c1782d2b830e45666323594f449",
+    "extraction": "Whole original monthly lines selected by year; all available elements and original flags retained; no cleaning, filling, unit conversion, or daily reformatting.",
+    "basic_variable_year_presence": {
+      "TMAX": {
+        "2004": {
+          "nonmissing_days": 361,
+          "unflagged_nonmissing_days": 361,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 360,
+          "unflagged_nonmissing_days": 360,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 340,
+          "unflagged_nonmissing_days": 340,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 363,
+          "unflagged_nonmissing_days": 363,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 363,
+          "unflagged_nonmissing_days": 363,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 362,
+          "unflagged_nonmissing_days": 362,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 358,
+          "unflagged_nonmissing_days": 358,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      },
+      "TMIN": {
+        "2004": {
+          "nonmissing_days": 361,
+          "unflagged_nonmissing_days": 361,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 360,
+          "unflagged_nonmissing_days": 360,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 340,
+          "unflagged_nonmissing_days": 340,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 362,
+          "unflagged_nonmissing_days": 362,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 363,
+          "unflagged_nonmissing_days": 363,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 363,
+          "unflagged_nonmissing_days": 363,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 358,
+          "unflagged_nonmissing_days": 358,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      },
+      "PRCP": {
+        "2004": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2006": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 359,
+          "unflagged_nonmissing_days": 359,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 353,
+          "unflagged_nonmissing_days": 353,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 346,
+          "unflagged_nonmissing_days": 346,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 362,
+          "unflagged_nonmissing_days": 362,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 346,
+          "unflagged_nonmissing_days": 346,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 353,
+          "unflagged_nonmissing_days": 353,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 342,
+          "unflagged_nonmissing_days": 342,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        }
+      }
+    }
+  },
+  {
+    "station_id": "USC00478190",
+    "name": "STOCKBRIDGE-MUNSEE RSVN",
+    "latitude": 44.87,
+    "longitude": -88.9044,
+    "source_url": "https://www.ncei.noaa.gov/pub/data/ghcn/daily/all/USC00478190.dly",
+    "download_date": "2026-10-20",
+    "requested_start": "2004-01-01",
+    "requested_end": "2025-12-31",
+    "filename": "USC00478190_2004_2025.dly",
+    "bytes": 592380,
+    "monthly_records": 2194,
+    "source_sha256": "6939cc2309b1cc1ee23fac3819a920ba967725227f727e893f68dbe8e0df952d",
+    "delivered_sha256": "ea5eaccad9d493ad177e0f4ca5853d1e0c065e350e79a27db09ed6701b44454d",
+    "extraction": "Whole original monthly lines selected by year; all available elements and original flags retained; no cleaning, filling, unit conversion, or daily reformatting.",
+    "basic_variable_year_presence": {
+      "TMAX": {
+        "2004": {
+          "nonmissing_days": 324,
+          "unflagged_nonmissing_days": 318,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 266,
+          "unflagged_nonmissing_days": 262,
+          "monthly_records": 10
+        },
+        "2006": {
+          "nonmissing_days": 306,
+          "unflagged_nonmissing_days": 293,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 362,
+          "unflagged_nonmissing_days": 359,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 360,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 362,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 357,
+          "unflagged_nonmissing_days": 357,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 357,
+          "unflagged_nonmissing_days": 357,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 358,
+          "unflagged_nonmissing_days": 358,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 362,
+          "unflagged_nonmissing_days": 361,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 355,
+          "unflagged_nonmissing_days": 355,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 363,
+          "unflagged_nonmissing_days": 363,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 353,
+          "unflagged_nonmissing_days": 353,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 345,
+          "unflagged_nonmissing_days": 345,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 359,
+          "unflagged_nonmissing_days": 359,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 362,
+          "unflagged_nonmissing_days": 362,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 361,
+          "unflagged_nonmissing_days": 361,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      },
+      "TMIN": {
+        "2004": {
+          "nonmissing_days": 328,
+          "unflagged_nonmissing_days": 316,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 265,
+          "unflagged_nonmissing_days": 260,
+          "monthly_records": 10
+        },
+        "2006": {
+          "nonmissing_days": 306,
+          "unflagged_nonmissing_days": 290,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 363,
+          "unflagged_nonmissing_days": 357,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 359,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 363,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 357,
+          "unflagged_nonmissing_days": 357,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 364,
+          "unflagged_nonmissing_days": 364,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 356,
+          "unflagged_nonmissing_days": 356,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 357,
+          "unflagged_nonmissing_days": 357,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 362,
+          "unflagged_nonmissing_days": 362,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 354,
+          "unflagged_nonmissing_days": 354,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 363,
+          "unflagged_nonmissing_days": 363,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 357,
+          "unflagged_nonmissing_days": 357,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 352,
+          "unflagged_nonmissing_days": 352,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 342,
+          "unflagged_nonmissing_days": 342,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 357,
+          "unflagged_nonmissing_days": 357,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 362,
+          "unflagged_nonmissing_days": 362,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 361,
+          "unflagged_nonmissing_days": 361,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 366,
+          "unflagged_nonmissing_days": 366,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 365,
+          "unflagged_nonmissing_days": 365,
+          "monthly_records": 12
+        }
+      },
+      "PRCP": {
+        "2004": {
+          "nonmissing_days": 333,
+          "unflagged_nonmissing_days": 333,
+          "monthly_records": 12
+        },
+        "2005": {
+          "nonmissing_days": 283,
+          "unflagged_nonmissing_days": 283,
+          "monthly_records": 10
+        },
+        "2006": {
+          "nonmissing_days": 320,
+          "unflagged_nonmissing_days": 320,
+          "monthly_records": 12
+        },
+        "2007": {
+          "nonmissing_days": 332,
+          "unflagged_nonmissing_days": 332,
+          "monthly_records": 12
+        },
+        "2008": {
+          "nonmissing_days": 323,
+          "unflagged_nonmissing_days": 323,
+          "monthly_records": 12
+        },
+        "2009": {
+          "nonmissing_days": 286,
+          "unflagged_nonmissing_days": 286,
+          "monthly_records": 12
+        },
+        "2010": {
+          "nonmissing_days": 264,
+          "unflagged_nonmissing_days": 264,
+          "monthly_records": 12
+        },
+        "2011": {
+          "nonmissing_days": 223,
+          "unflagged_nonmissing_days": 221,
+          "monthly_records": 12
+        },
+        "2012": {
+          "nonmissing_days": 231,
+          "unflagged_nonmissing_days": 212,
+          "monthly_records": 12
+        },
+        "2013": {
+          "nonmissing_days": 182,
+          "unflagged_nonmissing_days": 182,
+          "monthly_records": 12
+        },
+        "2014": {
+          "nonmissing_days": 119,
+          "unflagged_nonmissing_days": 119,
+          "monthly_records": 12
+        },
+        "2015": {
+          "nonmissing_days": 219,
+          "unflagged_nonmissing_days": 219,
+          "monthly_records": 12
+        },
+        "2016": {
+          "nonmissing_days": 214,
+          "unflagged_nonmissing_days": 214,
+          "monthly_records": 12
+        },
+        "2017": {
+          "nonmissing_days": 212,
+          "unflagged_nonmissing_days": 212,
+          "monthly_records": 12
+        },
+        "2018": {
+          "nonmissing_days": 263,
+          "unflagged_nonmissing_days": 263,
+          "monthly_records": 12
+        },
+        "2019": {
+          "nonmissing_days": 241,
+          "unflagged_nonmissing_days": 241,
+          "monthly_records": 12
+        },
+        "2020": {
+          "nonmissing_days": 297,
+          "unflagged_nonmissing_days": 297,
+          "monthly_records": 12
+        },
+        "2021": {
+          "nonmissing_days": 289,
+          "unflagged_nonmissing_days": 289,
+          "monthly_records": 12
+        },
+        "2022": {
+          "nonmissing_days": 296,
+          "unflagged_nonmissing_days": 296,
+          "monthly_records": 12
+        },
+        "2023": {
+          "nonmissing_days": 319,
+          "unflagged_nonmissing_days": 319,
+          "monthly_records": 12
+        },
+        "2024": {
+          "nonmissing_days": 320,
+          "unflagged_nonmissing_days": 320,
+          "monthly_records": 12
+        },
+        "2025": {
+          "nonmissing_days": 349,
+          "unflagged_nonmissing_days": 349,
+          "monthly_records": 12
+        }
+      }
+    }
+  }
+]
