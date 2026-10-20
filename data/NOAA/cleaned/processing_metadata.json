@@ -1,0 +1,65 @@
+{
+  "period": "2004-01-01/2025-12-31",
+  "stations": {
+    "USW00014897": "WAUSAU ASOS",
+    "USC00475364": "MERRILL",
+    "USC00475120": "MARSHFIELD EXP FARM",
+    "USC00478171": "STEVENS PT",
+    "USW00094985": "MARSHFIELD MUNI AP"
+  },
+  "rows": 40180,
+  "thresholds": {
+    "freezing_tmin_below_c": 0,
+    "hot_tmax_at_least_c": 30,
+    "wet_prcp_at_least_mm": 1,
+    "heavy_prcp_at_least_mm": 20,
+    "prolonged_wet_minimum_days": 3
+  },
+  "boolean_encoding": "true/false; empty CSV cells represent null (unknown)",
+  "sources": [
+    {
+      "station_id": "USW00014897",
+      "filename": "USW00014897_2004_2025.dly",
+      "sha256": "7caea4d935399ef384c4168631ca598e8d03deed2637af95dc0b0fc2d3f90c24"
+    },
+    {
+      "station_id": "USC00475364",
+      "filename": "USC00475364_2004_2025.dly",
+      "sha256": "d24a975b501d97c160b2fe3117efcbe956a146d5e3dde1d4ec0980d6d60e6d75"
+    },
+    {
+      "station_id": "USC00475120",
+      "filename": "USC00475120_2004_2025.dly",
+      "sha256": "e4c0d4582607e9b38db496f064ab4050fd0afb775b33fad6dc25af26997caf26"
+    },
+    {
+      "station_id": "USC00478171",
+      "filename": "USC00478171_2004_2025.dly",
+      "sha256": "2ae60a81f9e8a7cedfd20fdfd18d30f2cbfb021d3e668e3c7b8aaaa201ab7047"
+    },
+    {
+      "station_id": "USW00094985",
+      "filename": "USW00094985_2004_2025.dly",
+      "sha256": "eb6b12b099245aa2d36900d131c887844ea68c1782d2b830e45666323594f449"
+    }
+  ],
+  "status_counts": {
+    "TMAX": {
+      "usable": 40100,
+      "missing_value": 73,
+      "quality_flag_excluded": 7
+    },
+    "TMIN": {
+      "usable": 40076,
+      "missing_value": 69,
+      "quality_flag_excluded": 35
+    },
+    "PRCP": {
+      "usable": 40042,
+      "missing_value": 108,
+      "accumulated_or_presumed_zero": 24,
+      "quality_flag_excluded": 6
+    }
+  },
+  "notes": "See progress-note/NOAA_Cleaning.md for rules and analytical context."
+}
