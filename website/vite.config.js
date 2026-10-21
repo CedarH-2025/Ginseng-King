@@ -5,7 +5,7 @@ export default defineConfig({
   build: {
     // ECharts is tree-shaken to the four chart types used here; its shared
     // renderer still forms one intentionally self-contained static chunk.
-    chunkSizeWarningLimit: 800,
+    chunkSizeWarningLimit: 900,
   },
   server: {
     port: 5173,

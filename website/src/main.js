@@ -30,9 +30,10 @@ const app = document.querySelector('#app');
 const ROUTES = {
   overview: { label: 'Overview', eyebrow: 'Project snapshot', number: '01' },
   explore: { label: 'Explore data', eyebrow: 'Station × year evidence', number: '02' },
-  daily: { label: 'Daily detail', eyebrow: 'Sensitivity workspace', number: '03' },
-  methods: { label: 'Quality & methods', eyebrow: 'Provenance and limits', number: '04' },
-  about: { label: 'About us', eyebrow: 'Team and responsibilities', number: '05' },
+  daymet: { label: 'Daymet', eyebrow: 'County sampling points', number: '03' },
+  daily: { label: 'Daily detail', eyebrow: 'Sensitivity workspace', number: '04' },
+  methods: { label: 'Quality & methods', eyebrow: 'Provenance and limits', number: '05' },
+  about: { label: 'About us', eyebrow: 'Team and responsibilities', number: '06' },
 };
 
 const STATION_ROLES = {
@@ -62,6 +63,79 @@ const STATUS_LABELS = {
   missing_value: 'Missing source value',
   quality_flag_excluded: 'Quality-flag excluded',
   accumulated_or_presumed_zero: 'Accumulated / presumed zero excluded',
+};
+
+const DAYMET_POINT_LABELS = {
+  marathon_center: 'Central',
+  marathon_north: 'Northern',
+  marathon_south: 'Southern',
+  marathon_west: 'Western',
+  marathon_east: 'Eastern',
+};
+
+const DAYMET_POINT_ORDER = [
+  'marathon_center',
+  'marathon_north',
+  'marathon_south',
+  'marathon_west',
+  'marathon_east',
+];
+
+const DAYMET_METRICS = {
+  freezing: {
+    label: 'Freezing days',
+    field: 'is_freezing_day_true',
+    unknownField: 'is_freezing_day_unknown',
+    meanField: 'is_freezing_day_mean_days',
+    unit: 'days',
+    color: '#3977a8',
+    subtitle: 'Daily minimum temperature < 0°C',
+  },
+  hot: {
+    label: 'Hot days',
+    field: 'is_hot_day_true',
+    unknownField: 'is_hot_day_unknown',
+    meanField: 'is_hot_day_mean_days',
+    unit: 'days',
+    color: '#d95f59',
+    subtitle: 'Daily maximum temperature ≥ 30°C',
+  },
+  wetRun: {
+    label: 'Longest wet spell',
+    field: 'longest_observed_wet_run_days',
+    unknownField: 'is_wet_day_unknown',
+    meanField: null,
+    unit: 'days',
+    color: '#148a85',
+    subtitle: 'Wet day: daily precipitation ≥ 1 mm',
+  },
+  wet: {
+    label: 'Wet days',
+    field: 'is_wet_day_true',
+    unknownField: 'is_wet_day_unknown',
+    meanField: 'is_wet_day_mean_days',
+    unit: 'days',
+    color: '#148a85',
+    subtitle: 'Daily precipitation ≥ 1 mm',
+  },
+  heavy: {
+    label: 'Heavy precipitation days',
+    field: 'is_heavy_precip_day_true',
+    unknownField: 'is_heavy_precip_day_unknown',
+    meanField: 'is_heavy_precip_day_mean_days',
+    unit: 'days',
+    color: '#6a63a8',
+    subtitle: 'Daily precipitation ≥ 20 mm',
+  },
+  prolonged: {
+    label: 'Prolonged-wet days',
+    field: 'is_prolonged_wet_day_true',
+    unknownField: 'is_prolonged_wet_day_unknown',
+    meanField: 'is_prolonged_wet_day_mean_days',
+    unit: 'days',
+    color: '#2f6d58',
+    subtitle: 'Days in confirmed runs of at least three wet days',
+  },
 };
 
 const TEAM_MEMBERS = [
@@ -113,6 +187,7 @@ let datasets;
 let state;
 let activeDailyRows = [];
 let activeExploreRows = [];
+let activeDaymetRows = [];
 
 function escapeHtml(value) {
   return String(value ?? '')
@@ -189,6 +264,27 @@ function metricOptions(selected) {
     .join('');
 }
 
+function daymetMetricOptions(selected) {
+  return Object.entries(DAYMET_METRICS)
+    .map(
+      ([key, metric]) =>
+        `<option value="${key}" ${key === selected ? 'selected' : ''}>${metric.label}</option>`,
+    )
+    .join('');
+}
+
+function daymetPointCheckboxes() {
+  return DAYMET_POINT_ORDER.map(
+    (id, index) => `
+      <label class="check-row">
+        <input type="checkbox" name="daymet-point" value="${id}"
+          ${state.daymet.points.includes(id) ? 'checked' : ''}>
+        <span class="station-swatch" style="--swatch:${STATION_COLORS[index]}"></span>
+        <span><strong>${DAYMET_POINT_LABELS[id]}</strong><small>${id}</small></span>
+      </label>`,
+  ).join('');
+}
+
 function navMarkup() {
   return Object.entries(ROUTES)
     .map(
@@ -243,7 +339,7 @@ function buildLayout() {
         <nav class="side-nav">${navMarkup()}</nav>
         <div class="sidebar-source">
           <span class="status-dot"></span>
-          <p><strong>Static data ready</strong><br>NOAA GHCN-Daily<br>2004–2025</p>
+          <p><strong>Static data ready</strong><br>NOAA GHCN-Daily + Daymet V4 R1<br>2004–2025</p>
         </div>
       </aside>
 
@@ -394,6 +490,93 @@ function buildLayout() {
               </article>
             </div>
           </div>
+        </section>
+
+        <section class="page" id="page-daymet" data-page="daymet" hidden>
+          <div class="page-heading">
+            <div><p class="eyebrow">Daymet V4 R1 · Marathon County</p><h1>Daymet Sampling-Point Explorer</h1></div>
+            <p>Interactive views of gridded Daymet estimates at five geographic sampling points.
+              These are not verified farms and should not be interpreted as crop outcomes.</p>
+          </div>
+
+          <div class="metric-grid daymet-metrics" id="daymet-metric-cards"></div>
+
+          <div class="explorer-layout daymet-layout">
+            <aside class="filter-card" aria-label="Daymet filters">
+              <div class="filter-title"><span>Daymet filters</span><button id="daymet-reset" class="text-button" type="button">Reset</button></div>
+              <fieldset>
+                <legend>County sampling point</legend>
+                <div class="inline-actions">
+                  <button id="select-all-daymet-points" class="mini-button" type="button">Select all</button>
+                  <button id="clear-daymet-points" class="mini-button" type="button">Clear</button>
+                </div>
+                <div class="station-checks">${daymetPointCheckboxes()}</div>
+              </fieldset>
+              <fieldset>
+                <legend>Year range</legend>
+                <div class="paired-inputs">
+                  <label>From<select id="daymet-start-year">${yearOptions(state.daymet.startYear)}</select></label>
+                  <label>To<select id="daymet-end-year">${yearOptions(state.daymet.endYear)}</select></label>
+                </div>
+              </fieldset>
+              <label class="field-label">Period
+                <select id="daymet-period">
+                  <option value="annual">Annual</option>
+                  <option value="growing_season" selected>April–October</option>
+                </select>
+              </label>
+              <label class="field-label">Metric
+                <select id="daymet-metric">${daymetMetricOptions(state.daymet.metric)}</select>
+              </label>
+              <div id="daymet-definition" class="definition-box"></div>
+            </aside>
+
+            <div class="explorer-results">
+              <div class="result-toolbar">
+                <p id="daymet-result-count" aria-live="polite"></p>
+                <div>
+                  <button class="button button-secondary" type="button" data-chart-export="daymet-line-chart">Line PNG</button>
+                  <button class="button button-secondary" type="button" data-chart-export="daymet-heatmap-chart">Heatmap PNG</button>
+                  <button id="export-daymet-csv" class="button" type="button">Filtered CSV</button>
+                </div>
+              </div>
+              <article class="chart-card">
+                <div id="daymet-line-chart" class="chart chart-large" role="img" aria-label="Daymet county sampling point line chart"></div>
+              </article>
+              <div class="overview-chart-grid">
+                <article class="chart-card">
+                  <div id="daymet-mean-chart" class="chart chart-medium" role="img" aria-label="Daymet yearly five-point mean chart"></div>
+                  <p id="daymet-mean-finding" class="finding"></p>
+                </article>
+                <article class="chart-card">
+                  <div id="daymet-heatmap-chart" class="chart chart-medium" role="img" aria-label="Daymet sampling point heatmap"></div>
+                  <p id="daymet-heatmap-finding" class="finding"></p>
+                </article>
+              </div>
+              <article class="chart-card">
+                <div id="daymet-reference-chart" class="chart chart-medium" role="img" aria-label="NOAA baseline versus Daymet reference coordinates"></div>
+              </article>
+              <article class="table-card">
+                <div class="card-heading">
+                  <div><p class="eyebrow">Current Daymet selection</p><h2>Sampling-point summary</h2></div>
+                  <p id="daymet-table-note"></p>
+                </div>
+                <div class="table-shell"><table>
+                  <thead><tr><th>Point</th><th>Years</th><th>Mean</th><th>Minimum</th><th>Maximum</th><th>Unknown</th></tr></thead>
+                  <tbody id="daymet-summary-body"></tbody>
+                </table></div>
+              </article>
+            </div>
+          </div>
+
+          <section class="limitations daymet-note">
+            <div><p class="eyebrow">Daymet interpretation</p><h2>Gridded Estimates</h2></div>
+            <ul>
+              <li>Daymet values are gridded weather estimates at geographic sampling points, not measurements from verified farms.</li>
+              <li>Precipitation is water-equivalent precipitation, and run duration is calculated within the selected period.</li>
+              <li>Daymet calendar omissions are retained as unknown; missing values are not converted to dry or no-event days.</li>
+            </ul>
+          </section>
         </section>
 
         <section class="page" id="page-daily" data-page="daily" hidden>
@@ -608,9 +791,9 @@ function buildLayout() {
           </section>
 
           <section class="coming-next">
-            <div><span class="status-pill">Coming next</span><h2>NOAA vs Daymet</h2>
-              <p>A future comparison area is reserved for gridded Daymet weather data. No Daymet
-                acquisition, analysis, result, or completion status is implied in this MVP.</p></div>
+            <div><span class="status-pill">Now included</span><h2>NOAA vs Daymet</h2>
+              <p>The Daymet panel now includes gridded sampling-point results and a reference-coordinate
+                comparison against NOAA station summaries for matching weather indicators.</p></div>
             <span class="coming-mark" aria-hidden="true">D</span>
           </section>
         </section>
@@ -674,6 +857,13 @@ function initializeState() {
       endYear: 2025,
       period: 'Apr-Oct',
       metric: 'hot',
+    },
+    daymet: {
+      points: [...DAYMET_POINT_ORDER],
+      startYear: 2004,
+      endYear: 2025,
+      period: 'growing_season',
+      metric: 'freezing',
     },
     daily: {
       station: datasets.stations[0].id,
@@ -1199,6 +1389,398 @@ function renderExplore() {
     `Mean, minimum, and maximum cover ${state.explore.startYear}–${state.explore.endYear}; unknown is summed.`;
 }
 
+function daymetValue(row, metricKey) {
+  return row?.[DAYMET_METRICS[metricKey].field] ?? null;
+}
+
+function daymetUnknown(row, metricKey) {
+  return row?.[DAYMET_METRICS[metricKey].unknownField] ?? 0;
+}
+
+function daymetFilteredRows() {
+  const selected = new Set(state.daymet.points);
+  return datasets.daymet.countySummary.filter(
+    (row) =>
+      selected.has(row.location_id) &&
+      row.year >= state.daymet.startYear &&
+      row.year <= state.daymet.endYear &&
+      row.period === state.daymet.period,
+  );
+}
+
+function daymetPeriodLabel() {
+  return state.daymet.period === 'annual' ? 'Annual' : 'April–October';
+}
+
+function renderDaymet() {
+  const metric = DAYMET_METRICS[state.daymet.metric];
+  activeDaymetRows = daymetFilteredRows();
+  const years = Array.from(
+    { length: state.daymet.endYear - state.daymet.startYear + 1 },
+    (_, index) => state.daymet.startYear + index,
+  );
+
+  document.querySelector('#daymet-definition').innerHTML =
+    `<strong>${metric.label}</strong><p>${metric.subtitle}</p>` +
+    '<small>Source: Daymet V4 R1. Points are geographic samples, not verified farms.</small>';
+  document.querySelector('#daymet-result-count').textContent =
+    `${activeDaymetRows.length} point-year rows · ${daymetPeriodLabel()} · ${metric.label}`;
+
+  renderDaymetCards();
+  renderDaymetLineChart(years, metric);
+  renderDaymetMeanChart(years, metric);
+  renderDaymetHeatmap(years, metric);
+  renderDaymetReferenceChart(metric);
+  renderDaymetTable(metric);
+}
+
+function renderDaymetCards() {
+  const audit = datasets.daymet.audit.county;
+  const meanRows = datasets.daymet.countyMeans.filter(
+    (row) => row.year >= state.daymet.startYear && row.year <= state.daymet.endYear,
+  );
+  const metric = DAYMET_METRICS[state.daymet.metric];
+  const meanValues = meanRows
+    .map((row) => (metric.meanField ? row[metric.meanField] : null))
+    .filter(Number.isFinite);
+  const peak = meanValues.length
+    ? meanRows.reduce((best, row) =>
+        row[metric.meanField] > best[metric.meanField] ? row : best,
+      )
+    : null;
+  const unknown = activeDaymetRows.reduce((total, row) => total + daymetUnknown(row, state.daymet.metric), 0);
+  const observed = activeDaymetRows.reduce((total, row) => total + (row.tmax_c_observed_days ?? 0), 0);
+
+  document.querySelector('#daymet-metric-cards').innerHTML = [
+    {
+      label: 'County sampling points',
+      value: datasets.daymet.countyLocations.length,
+      detail: 'Central, northern, southern, western, and eastern Marathon County points',
+    },
+    {
+      label: 'Daily Daymet rows',
+      value: audit.daily_rows.toLocaleString(),
+      detail: `${audit.calendar_omissions} calendar omissions retained as unknown`,
+    },
+    {
+      label: `Peak five-point mean · ${metric.label}`,
+      value: peak ? `${peak.year}` : 'N/A',
+      detail: peak ? `${formatNumber(peak[metric.meanField], 1)} ${metric.unit} in ${daymetPeriodLabel()}` : 'Mean file covers growing-season count metrics only',
+    },
+    {
+      label: 'Unknown labels in selection',
+      value: unknown.toLocaleString(),
+      detail: `${observed.toLocaleString()} observed variable-days across selected point-years`,
+    },
+  ]
+    .map(
+      (card) => `<article class="metric-card"><span>${card.label}</span><strong>${card.value}</strong><small>${card.detail}</small></article>`,
+    )
+    .join('');
+}
+
+function renderDaymetLineChart(years, metric) {
+  if (!activeDaymetRows.length) {
+    renderEmptyChart('daymet-line-chart', 'Daymet sampling-point trends', 'Select at least one sampling point.');
+    return;
+  }
+
+  renderChart('daymet-line-chart', {
+    ...baseChartOption({
+      title: `${metric.label} at five Marathon County sampling points`,
+      subtitle: `${daymetPeriodLabel()}, ${state.daymet.startYear}–${state.daymet.endYear} · ${metric.subtitle}`,
+      filename: `ginseng-king-daymet-${state.daymet.metric}-line`,
+      grid: { top: 100, bottom: 74 },
+    }),
+    tooltip: {
+      trigger: 'axis',
+      valueFormatter: (value) => `${formatNumber(value, 1)} ${metric.unit}`,
+    },
+    legend: {
+      type: 'scroll',
+      top: 64,
+      left: 12,
+      right: 55,
+      data: state.daymet.points.map((id) => DAYMET_POINT_LABELS[id]),
+    },
+    dataZoom: [
+      { type: 'inside', start: 0, end: 100 },
+      { type: 'slider', height: 18, bottom: 12, borderColor: 'transparent', backgroundColor: '#eef3ef' },
+    ],
+    xAxis: {
+      type: 'category',
+      data: years,
+      boundaryGap: false,
+      name: 'year',
+      axisLabel: { color: CHART_MUTED },
+      axisLine: { lineStyle: { color: CHART_GRID } },
+    },
+    yAxis: {
+      type: 'value',
+      name: metric.unit,
+      ...VERTICAL_AXIS_NAME,
+      min: 0,
+      minInterval: 1,
+      axisLabel: { color: CHART_MUTED },
+      splitLine: { lineStyle: { color: CHART_GRID } },
+    },
+    series: state.daymet.points.map((id, index) => ({
+      name: DAYMET_POINT_LABELS[id],
+      type: 'line',
+      data: years.map((year) => {
+        const row = activeDaymetRows.find((entry) => entry.location_id === id && entry.year === year);
+        const value = daymetValue(row, state.daymet.metric);
+        return Number.isFinite(value) ? value : null;
+      }),
+      connectNulls: false,
+      showSymbol: years.length <= 24,
+      symbolSize: 6,
+      lineStyle: { width: 2.6, color: STATION_COLORS[index] },
+      itemStyle: { color: STATION_COLORS[index] },
+      emphasis: { focus: 'series', lineStyle: { width: 4 } },
+    })),
+  });
+}
+
+function renderDaymetMeanChart(years, metric) {
+  const values = years.map((year) => {
+    if (state.daymet.period === 'growing_season' && metric.meanField) {
+      const row = datasets.daymet.countyMeans.find((entry) => entry.year === year);
+      return row?.[metric.meanField] ?? null;
+    }
+    const rows = activeDaymetRows.filter((row) => row.year === year);
+    return mean(rows.map((row) => daymetValue(row, state.daymet.metric)));
+  });
+  const indexed = years.map((year, index) => ({ year, value: values[index] })).filter((entry) => Number.isFinite(entry.value));
+  const top = [...indexed].sort((a, b) => b.value - a.value).slice(0, 5);
+
+  renderChart('daymet-mean-chart', {
+    ...baseChartOption({
+      title: `Five-point mean ${metric.label.toLowerCase()}`,
+      subtitle: `${daymetPeriodLabel()} · simple mean, not area-weighted`,
+      filename: `ginseng-king-daymet-${state.daymet.metric}-mean`,
+      grid: { top: 92, bottom: 48 },
+    }),
+    tooltip: {
+      trigger: 'axis',
+      valueFormatter: (value) => `${formatNumber(value, 1)} ${metric.unit}`,
+    },
+    xAxis: {
+      type: 'category',
+      data: top.map((entry) => entry.year),
+      axisLabel: { color: CHART_MUTED },
+      axisLine: { lineStyle: { color: CHART_GRID } },
+    },
+    yAxis: {
+      type: 'value',
+      name: metric.unit,
+      ...VERTICAL_AXIS_NAME,
+      min: 0,
+      axisLabel: { color: CHART_MUTED },
+      splitLine: { lineStyle: { color: CHART_GRID } },
+    },
+    series: [
+      {
+        type: 'bar',
+        data: top.map((entry) => ({
+          value: Number(entry.value.toFixed(1)),
+          itemStyle: { color: metric.color, borderRadius: [4, 4, 0, 0] },
+        })),
+        label: { show: true, position: 'top', formatter: ({ value }) => formatNumber(value, 1) },
+        barMaxWidth: 42,
+      },
+    ],
+  });
+
+  document.querySelector('#daymet-mean-finding').innerHTML = top.length
+    ? `<strong>Highest selected-year mean:</strong> ${top[0].year} with ${formatNumber(top[0].value, 1)} ${metric.unit}. ` +
+      'This is a simple five-point average, not a county-wide area-weighted estimate.'
+    : '<strong>No complete mean available.</strong> Adjust the metric or selected points.';
+}
+
+function renderDaymetHeatmap(years, metric) {
+  const data = [];
+  const values = [];
+  state.daymet.points.forEach((id, pointIndex) => {
+    years.forEach((year, yearIndex) => {
+      const row = activeDaymetRows.find((entry) => entry.location_id === id && entry.year === year);
+      if (!row) return;
+      const value = daymetValue(row, state.daymet.metric);
+      data.push([yearIndex, pointIndex, value, daymetUnknown(row, state.daymet.metric)]);
+      values.push(value);
+    });
+  });
+
+  renderChart('daymet-heatmap-chart', {
+    ...baseChartOption({
+      title: `${metric.label}: point × year`,
+      subtitle: 'Cell color shows the selected Daymet metric',
+      filename: `ginseng-king-daymet-${state.daymet.metric}-heatmap`,
+      grid: { left: 82, right: 76, bottom: 58 },
+    }),
+    tooltip: {
+      position: 'top',
+      formatter: ({ value }) => {
+        const point = state.daymet.points[value[1]];
+        return `<strong>${DAYMET_POINT_LABELS[point]} · ${years[value[0]]}</strong><br>${metric.label}: ${formatNumber(value[2], 1)} ${metric.unit}<br>${value[3]} unknown labels`;
+      },
+    },
+    xAxis: {
+      type: 'category',
+      data: years,
+      axisLabel: { color: CHART_MUTED, interval: years.length > 14 ? 1 : 0 },
+      splitArea: { show: true },
+      axisLine: { lineStyle: { color: CHART_GRID } },
+    },
+    yAxis: {
+      type: 'category',
+      data: state.daymet.points.map((id) => DAYMET_POINT_LABELS[id]),
+      axisLabel: { color: CHART_MUTED },
+      splitArea: { show: true },
+      axisLine: { show: false },
+      axisTick: { show: false },
+    },
+    visualMap: {
+      min: 0,
+      max: Math.max(1, Math.ceil(Math.max(...values))),
+      dimension: 2,
+      calculable: true,
+      orient: 'vertical',
+      right: 4,
+      top: 92,
+      inRange: { color: ['#f6e7be', '#79b7a5', '#135f63'] },
+      textStyle: { color: CHART_MUTED },
+    },
+    series: [
+      {
+        type: 'heatmap',
+        data,
+        itemStyle: { borderColor: '#fff', borderWidth: 2 },
+        emphasis: { itemStyle: { shadowBlur: 8, shadowColor: 'rgba(23,63,53,.28)' } },
+      },
+    ],
+  });
+
+  const max = data.reduce((best, item) => (item[2] > best[2] ? item : best), data[0] ?? [0, 0, 0, 0]);
+  document.querySelector('#daymet-heatmap-finding').innerHTML = data.length
+    ? `<strong>Highest selected cell:</strong> ${DAYMET_POINT_LABELS[state.daymet.points[max[1]]]} in ${years[max[0]]} (${formatNumber(max[2], 1)} ${metric.unit}).`
+    : '<strong>No cells to show.</strong> Select at least one sampling point.';
+}
+
+function renderDaymetReferenceChart(metric) {
+  const noaaField = {
+    freezing: 'is_freezing_day_true_days',
+    hot: 'is_hot_day_true_days',
+    wet: 'is_wet_day_true_days',
+    heavy: 'is_heavy_precip_day_true_days',
+    prolonged: 'is_prolonged_wet_day_true_days',
+  }[state.daymet.metric];
+
+  if (!noaaField) {
+    renderEmptyChart(
+      'daymet-reference-chart',
+      'NOAA station vs Daymet reference coordinates',
+      'NOAA seasonal summaries do not include longest observed wet-run length.',
+    );
+    return;
+  }
+
+  const noaaPeriod = state.daymet.period === 'annual' ? 'Annual' : 'Apr-Oct';
+  const daymetRows = datasets.daymet.referenceSummary.filter(
+    (row) =>
+      row.year >= state.daymet.startYear &&
+      row.year <= state.daymet.endYear &&
+      row.period === state.daymet.period,
+  );
+  const categories = datasets.stations.map((station) => station.name);
+  const noaaValues = datasets.stations.map((station) => {
+    const rows = datasets.summary.filter(
+      (row) =>
+        row.station_id === station.id &&
+        row.year >= state.daymet.startYear &&
+        row.year <= state.daymet.endYear &&
+        row.period === noaaPeriod,
+    );
+    return mean(rows.map((row) => row[noaaField]));
+  });
+  const daymetValues = datasets.stations.map((station) => {
+    const rows = daymetRows.filter((row) => row.reference_noaa_station_id === station.id);
+    return mean(rows.map((row) => daymetValue(row, state.daymet.metric)));
+  });
+
+  renderChart('daymet-reference-chart', {
+    ...baseChartOption({
+      title: `NOAA baseline vs Daymet at station coordinates`,
+      subtitle: `${metric.label} mean, ${daymetPeriodLabel()} ${state.daymet.startYear}–${state.daymet.endYear}`,
+      filename: `ginseng-king-daymet-noaa-reference-${state.daymet.metric}`,
+      grid: { left: 140, top: 96, bottom: 44 },
+    }),
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'shadow' },
+      valueFormatter: (value) => `${formatNumber(value, 1)} ${metric.unit}`,
+    },
+    legend: { top: 64, left: 12, data: ['NOAA station observation', 'Daymet reference coordinate'] },
+    xAxis: {
+      type: 'value',
+      name: metric.unit,
+      axisLabel: { color: CHART_MUTED },
+      splitLine: { lineStyle: { color: CHART_GRID } },
+    },
+    yAxis: {
+      type: 'category',
+      data: categories,
+      axisLabel: { color: CHART_MUTED, width: 125, overflow: 'truncate' },
+      axisLine: { show: false },
+      axisTick: { show: false },
+    },
+    series: [
+      {
+        name: 'NOAA station observation',
+        type: 'bar',
+        data: noaaValues.map((value) => Number(value.toFixed(1))),
+        itemStyle: { color: '#3977a8' },
+        barMaxWidth: 18,
+      },
+      {
+        name: 'Daymet reference coordinate',
+        type: 'bar',
+        data: daymetValues.map((value) => Number(value.toFixed(1))),
+        itemStyle: { color: '#d47b45' },
+        barMaxWidth: 18,
+      },
+    ],
+  });
+}
+
+function renderDaymetTable(metric) {
+  const rows = state.daymet.points.map((id) => {
+    const pointRows = activeDaymetRows.filter((row) => row.location_id === id);
+    const values = pointRows.map((row) => daymetValue(row, state.daymet.metric)).filter(Number.isFinite);
+    return {
+      id,
+      count: pointRows.length,
+      average: mean(values),
+      minimum: values.length ? Math.min(...values) : null,
+      maximum: values.length ? Math.max(...values) : null,
+      unknown: pointRows.reduce((total, row) => total + daymetUnknown(row, state.daymet.metric), 0),
+    };
+  });
+
+  document.querySelector('#daymet-summary-body').innerHTML = rows.length
+    ? rows
+        .map(
+          (row) => `<tr><td><strong>${DAYMET_POINT_LABELS[row.id]}</strong><span class="cell-sub">${row.id}</span></td>
+            <td>${row.count}</td><td>${formatNumber(row.average, 2)} ${metric.unit}</td>
+            <td>${formatNumber(row.minimum, 2)}</td><td>${formatNumber(row.maximum, 2)}</td>
+            <td>${row.unknown.toLocaleString()} labels</td></tr>`,
+        )
+        .join('')
+    : '<tr><td colspan="6" class="empty-cell">No Daymet points selected.</td></tr>';
+  document.querySelector('#daymet-table-note').textContent =
+    `Mean, minimum, and maximum cover ${state.daymet.startYear}–${state.daymet.endYear}; unknown is summed.`;
+}
+
 function getThresholdInputs() {
   return {
     hotC: Number(document.querySelector('#threshold-hot').value),
@@ -1659,6 +2241,27 @@ function exportExploreCsv() {
   );
 }
 
+function exportDaymetCsv() {
+  if (!activeDaymetRows.length) return;
+  const metric = DAYMET_METRICS[state.daymet.metric];
+  const csv = rowsToCsv(activeDaymetRows, [
+    { label: 'source', value: () => 'Daymet V4 R1' },
+    { label: 'location_id', value: (row) => row.location_id },
+    { label: 'point_label', value: (row) => DAYMET_POINT_LABELS[row.location_id] },
+    { label: 'year', value: (row) => row.year },
+    { label: 'period', value: (row) => row.period },
+    { label: 'metric', value: () => state.daymet.metric },
+    { label: 'metric_label', value: () => metric.label },
+    { label: `value_${metric.unit}`, value: (row) => daymetValue(row, state.daymet.metric) },
+    { label: 'unknown_labels', value: (row) => daymetUnknown(row, state.daymet.metric) },
+    { label: 'calendar_days', value: (row) => row.calendar_days },
+  ]);
+  downloadText(
+    `ginseng-king-daymet-${state.daymet.metric}-${state.daymet.period}-${state.daymet.startYear}-${state.daymet.endYear}.csv`,
+    csv,
+  );
+}
+
 function bindEvents() {
   window.addEventListener('hashchange', showRoute);
 
@@ -1730,6 +2333,72 @@ function bindEvents() {
   });
   document.querySelector('#export-explore-csv').addEventListener('click', exportExploreCsv);
 
+  document.querySelector('#daymet-reset').addEventListener('click', () => {
+    state.daymet = {
+      points: [...DAYMET_POINT_ORDER],
+      startYear: 2004,
+      endYear: 2025,
+      period: 'growing_season',
+      metric: 'freezing',
+    };
+    document.querySelectorAll('[name="daymet-point"]').forEach((input) => {
+      input.checked = true;
+    });
+    document.querySelector('#daymet-start-year').value = '2004';
+    document.querySelector('#daymet-end-year').value = '2025';
+    document.querySelector('#daymet-period').value = 'growing_season';
+    document.querySelector('#daymet-metric').value = 'freezing';
+    renderDaymet();
+  });
+  document.querySelector('#select-all-daymet-points').addEventListener('click', () => {
+    document.querySelectorAll('[name="daymet-point"]').forEach((input) => {
+      input.checked = true;
+    });
+    state.daymet.points = [...DAYMET_POINT_ORDER];
+    renderDaymet();
+  });
+  document.querySelector('#clear-daymet-points').addEventListener('click', () => {
+    document.querySelectorAll('[name="daymet-point"]').forEach((input) => {
+      input.checked = false;
+    });
+    state.daymet.points = [];
+    renderDaymet();
+  });
+  document.querySelectorAll('[name="daymet-point"]').forEach((input) => {
+    input.addEventListener('change', () => {
+      state.daymet.points = Array.from(
+        document.querySelectorAll('[name="daymet-point"]:checked'),
+        (element) => element.value,
+      );
+      renderDaymet();
+    });
+  });
+  document.querySelector('#daymet-start-year').addEventListener('change', (event) => {
+    state.daymet.startYear = Number(event.target.value);
+    if (state.daymet.startYear > state.daymet.endYear) {
+      state.daymet.endYear = state.daymet.startYear;
+      document.querySelector('#daymet-end-year').value = String(state.daymet.endYear);
+    }
+    renderDaymet();
+  });
+  document.querySelector('#daymet-end-year').addEventListener('change', (event) => {
+    state.daymet.endYear = Number(event.target.value);
+    if (state.daymet.endYear < state.daymet.startYear) {
+      state.daymet.startYear = state.daymet.endYear;
+      document.querySelector('#daymet-start-year').value = String(state.daymet.startYear);
+    }
+    renderDaymet();
+  });
+  document.querySelector('#daymet-period').addEventListener('change', (event) => {
+    state.daymet.period = event.target.value;
+    renderDaymet();
+  });
+  document.querySelector('#daymet-metric').addEventListener('change', (event) => {
+    state.daymet.metric = event.target.value;
+    renderDaymet();
+  });
+  document.querySelector('#export-daymet-csv').addEventListener('click', exportDaymetCsv);
+
   document.querySelectorAll('[data-chart-export]').forEach((button) => {
     button.addEventListener('click', () => {
       const chartId = button.dataset.chartExport;
@@ -1789,6 +2458,7 @@ function showRoute() {
 
   if (route === 'overview') renderOverview();
   if (route === 'explore') renderExplore();
+  if (route === 'daymet') renderDaymet();
   if (route === 'daily') renderDaily();
   if (route === 'methods') renderQuality();
   document.title = `${ROUTES[route].label} · Ginseng King`;

@@ -91,6 +91,55 @@ function typeSummaryRow(row) {
   );
 }
 
+function typeDaymetSummaryRow(row) {
+  return Object.fromEntries(
+    Object.entries(row).map(([key, value]) => [
+      key,
+      ['source', 'reference_noaa_station_id', 'location_id', 'period'].includes(key)
+        ? value
+        : numberOrNull(value),
+    ]),
+  );
+}
+
+function typeDaymetDailyRow(row) {
+  return {
+    source: row.source,
+    location_id: row.location_id,
+    latitude: numberOrNull(row.latitude),
+    longitude: numberOrNull(row.longitude),
+    date: row.date,
+    calendar_status: row.calendar_status,
+    tmax_c: numberOrNull(row.tmax_c),
+    tmin_c: numberOrNull(row.tmin_c),
+    prcp_mm: numberOrNull(row.prcp_mm),
+    is_growing_season: booleanOrNull(row.is_growing_season),
+    is_freezing_day: booleanOrNull(row.is_freezing_day),
+    is_hot_day: booleanOrNull(row.is_hot_day),
+    is_wet_day: booleanOrNull(row.is_wet_day),
+    is_heavy_precip_day: booleanOrNull(row.is_heavy_precip_day),
+    is_prolonged_wet_day: booleanOrNull(row.is_prolonged_wet_day),
+  };
+}
+
+function typeLocationRow(row) {
+  return Object.fromEntries(
+    Object.entries(row).map(([key, value]) => [
+      key,
+      ['latitude', 'longitude'].includes(key) ? numberOrNull(value) : value,
+    ]),
+  );
+}
+
+function typeCountyYearMeanRow(row) {
+  return Object.fromEntries(
+    Object.entries(row).map(([key, value]) => [
+      key,
+      key === 'year' || key.endsWith('_points') || key === 'sampling_points' ? numberOrNull(value) : numberOrNull(value),
+    ]),
+  );
+}
+
 async function fetchRequired(path, label) {
   const response = await fetch(`${import.meta.env.BASE_URL}data/${path}`, { cache: 'no-store' });
   if (!response.ok) {
@@ -125,12 +174,32 @@ function validateDatasets(daily, summary, metadata) {
 }
 
 export async function loadDatasets() {
-  const [dailyText, summaryText, metadataText, websiteManifestText, stationRegionText] = await Promise.all([
+  const [
+    dailyText,
+    summaryText,
+    metadataText,
+    websiteManifestText,
+    stationRegionText,
+    daymetCountySummaryText,
+    daymetCountyDailyText,
+    daymetReferenceSummaryText,
+    daymetCountyMeansText,
+    daymetAuditText,
+    countyLocationsText,
+    referenceLocationsText,
+  ] = await Promise.all([
     fetchRequired('daily_weather.csv', 'Daily weather data'),
     fetchRequired('seasonal_summary.csv', 'Seasonal summary data'),
     fetchRequired('processing_metadata.json', 'Processing metadata'),
     fetchRequired('website_data_manifest.json', 'Website data manifest'),
     fetchRequired('station_region.geojson', 'Regional station map'),
+    fetchRequired('daymet_county_summary.csv', 'Daymet county summary data'),
+    fetchRequired('daymet_county_daily.csv', 'Daymet county daily data'),
+    fetchRequired('daymet_reference_summary.csv', 'Daymet reference summary data'),
+    fetchRequired('county_year_means.csv', 'Daymet county yearly means'),
+    fetchRequired('daymet_results_audit.json', 'Daymet audit metadata'),
+    fetchRequired('county_locations.csv', 'Daymet county locations'),
+    fetchRequired('reference_locations.csv', 'Daymet reference locations'),
   ]);
 
   const daily = parseCsv(dailyText).map(typeDailyRow);
@@ -138,9 +207,25 @@ export async function loadDatasets() {
   const metadata = JSON.parse(metadataText);
   const websiteManifest = JSON.parse(websiteManifestText);
   const stationRegion = JSON.parse(stationRegionText);
+  const daymetCountySummary = parseCsv(daymetCountySummaryText).map(typeDaymetSummaryRow);
+  const daymetCountyDaily = parseCsv(daymetCountyDailyText).map(typeDaymetDailyRow);
+  const daymetReferenceSummary = parseCsv(daymetReferenceSummaryText).map(typeDaymetSummaryRow);
+  const daymetCountyMeans = parseCsv(daymetCountyMeansText).map(typeCountyYearMeanRow);
+  const daymetAudit = JSON.parse(daymetAuditText);
+  const daymetCountyLocations = parseCsv(countyLocationsText).map(typeLocationRow);
+  const daymetReferenceLocations = parseCsv(referenceLocationsText).map(typeLocationRow);
   validateDatasets(daily, summary, metadata);
   if (stationRegion.type !== 'FeatureCollection' || stationRegion.features?.length !== 4) {
     throw new Error('Regional station map does not contain the expected four county boundaries.');
+  }
+  if (
+    daymetCountySummary.length !== 220 ||
+    daymetCountyDaily.length !== 40_180 ||
+    daymetReferenceSummary.length !== 220 ||
+    daymetCountyLocations.length !== 5 ||
+    daymetAudit.county?.calendar_and_summary_checks !== 'passed'
+  ) {
+    throw new Error('Daymet county data did not pass the expected structural checks.');
   }
 
   const stations = [];
@@ -162,6 +247,15 @@ export async function loadDatasets() {
     metadata,
     websiteManifest,
     stationRegion,
+    daymet: {
+      countySummary: daymetCountySummary,
+      countyDaily: daymetCountyDaily,
+      referenceSummary: daymetReferenceSummary,
+      countyMeans: daymetCountyMeans,
+      audit: daymetAudit,
+      countyLocations: daymetCountyLocations,
+      referenceLocations: daymetReferenceLocations,
+    },
     stations,
     dailyByStation: Map.groupBy
       ? Map.groupBy(daily, (row) => row.station_id)
