@@ -9,6 +9,8 @@ const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const websiteDirectory = resolve(scriptDirectory, '..');
 const repositoryDirectory = resolve(websiteDirectory, '..');
 const sourceDirectory = join(repositoryDirectory, 'data', 'NOAA', 'cleaned');
+const daymetDirectory = join(repositoryDirectory, 'data', 'Daymet');
+const daymetCleanedDirectory = join(daymetDirectory, 'cleaned');
 const outputDirectory = join(websiteDirectory, 'public', 'data');
 const require = createRequire(import.meta.url);
 const REGION_COUNTIES = new Set(['55069', '55073', '55097', '55141']);
@@ -17,6 +19,16 @@ const expectedFiles = [
   { name: 'daily_weather.csv', expectedRows: 40_180 },
   { name: 'seasonal_summary.csv', expectedRows: 220 },
   { name: 'processing_metadata.json' },
+];
+
+const daymetFiles = [
+  { name: 'daymet_county_summary.csv', expectedRows: 220, sourceDirectory: daymetCleanedDirectory },
+  { name: 'daymet_county_daily.csv', expectedRows: 40_180, sourceDirectory: daymetCleanedDirectory },
+  { name: 'daymet_reference_summary.csv', expectedRows: 220, sourceDirectory: daymetCleanedDirectory },
+  { name: 'county_year_means.csv', expectedRows: 22, sourceDirectory: daymetCleanedDirectory },
+  { name: 'daymet_results_audit.json', sourceDirectory: daymetCleanedDirectory },
+  { name: 'county_locations.csv', expectedRows: 5, sourceDirectory: daymetDirectory },
+  { name: 'reference_locations.csv', expectedRows: 5, sourceDirectory: daymetDirectory },
 ];
 
 function sha256(buffer) {
@@ -66,6 +78,29 @@ for (const file of expectedFiles) {
   });
 }
 
+const daymetOutputs = [];
+for (const file of daymetFiles) {
+  const sourcePath = join(file.sourceDirectory, file.name);
+  const outputPath = join(outputDirectory, file.name);
+  const contents = await readFile(sourcePath);
+  const rows = file.name.endsWith('.csv') ? countCsvRows(contents) : undefined;
+
+  if (file.expectedRows !== undefined && rows !== file.expectedRows) {
+    throw new Error(
+      `${file.name} has ${rows.toLocaleString()} rows; expected ${file.expectedRows.toLocaleString()}.`,
+    );
+  }
+
+  await copyFile(sourcePath, outputPath);
+  daymetOutputs.push({
+    name: file.name,
+    source: relative(websiteDirectory, sourcePath),
+    bytes: contents.byteLength,
+    sha256: sha256(contents),
+    ...(rows === undefined ? {} : { rows }),
+  });
+}
+
 const metadata = JSON.parse(await readFile(join(sourceDirectory, 'processing_metadata.json'), 'utf8'));
 if (metadata.rows !== 40_180 || Object.keys(metadata.stations ?? {}).length !== 5) {
   throw new Error('processing_metadata.json does not describe the expected five-station dataset.');
@@ -94,6 +129,11 @@ const websiteManifest = {
   source_directory: relative(websiteDirectory, sourceDirectory),
   cleaning_documentation_date: await documentedDate(),
   raw_download_date: await rawDownloadDate(),
+  daymet: {
+    source_directory: relative(websiteDirectory, daymetCleanedDirectory),
+    preparation_note: '../progress-note/Daymet_Progress.md',
+    files: daymetOutputs,
+  },
   map_boundary: {
     name: 'station_region.geojson',
     source: 'U.S. Census Bureau cartographic boundaries via us-atlas 3.0.1',

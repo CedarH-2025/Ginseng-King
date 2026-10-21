@@ -39,10 +39,19 @@ Canonical repository inputs:
 | `data/NOAA/cleaned/daily_weather.csv` | 40,180 station-day rows used by Daily Detail and sensitivity calculations |
 | `data/NOAA/cleaned/seasonal_summary.csv` | 220 station-year-period rows used by Overview, Explore Data, and coverage views |
 | `data/NOAA/cleaned/processing_metadata.json` | Station list, baseline thresholds, status counts, input checksums, and provenance |
+| `data/Daymet/cleaned/daymet_county_summary.csv` | 220 Daymet sampling-point year-period rows used by the Daymet interactive charts |
+| `data/Daymet/cleaned/daymet_county_daily.csv` | 40,180 Daymet sampling-point daily rows retained for provenance and future daily extensions |
+| `data/Daymet/cleaned/daymet_reference_summary.csv` | Daymet summaries at NOAA station coordinates used for NOAA-vs-Daymet reference comparison |
+| `data/Daymet/cleaned/county_year_means.csv` | Simple five-point growing-season means used for Daymet yearly ranking cards/charts |
+| `data/Daymet/county_locations.csv` | Five Marathon County geographic sampling points |
+| `data/Daymet/cleaned/daymet_results_audit.json` | Daymet structural row-count and calendar audit results |
 | `progress-note/NOAA_Cleaning.md` | Cleaning rules, nullable-label semantics, and threshold rationale |
 | `progress-note/NOAA_DataChoose.md` | Station-selection rationale and geographic roles |
+| `progress-note/Daymet_Progress.md` | Daymet methods, calendar handling, preliminary county results, and limitations |
 
 Main daily fields include station ID/name, date, latitude, longitude, TMAX, TMIN, PRCP, processing status, growing-season flag, and nullable hot/freeze/wet/heavy/prolonged-wet labels. Summary fields include expected and usable days, variable coverage, and true/false/unknown label counts.
+
+Daymet fields use degrees Celsius and water-equivalent millimeters directly. Daymet calendar omissions are retained as rows with unknown weather values and labels.
 
 The regional map uses U.S. Census Bureau county boundaries packaged by `us-atlas`. The preparation script extracts only Lincoln, Marathon, Wood, and Portage counties, so the browser never requests an external map service.
 
@@ -133,7 +142,52 @@ Metric definitions:
 - **Filtered CSV** downloads the currently selected station-year rows.
 - The download icon inside a chart also exports that chart as PNG.
 
-### 3. Daily Detail & Sensitivity
+### 3. Daymet
+
+This panel turns the new Daymet V4 R1 county sampling-point outputs into interactive charts. The default view matches the preliminary static figures: April–October, 2004–2025, five Marathon County sampling points.
+
+**Filters**
+
+- **County sampling point:** select central, northern, southern, western, eastern, or any subset.
+- **Year range:** choose inclusive start and end years.
+- **Period:** switch between Annual and April–October.
+- **Metric:** select freezing days, hot days, longest wet spell, wet days, heavy precipitation days, or prolonged-wet days.
+
+**Daymet sampling-point line chart**
+
+- Draws one line per selected Marathon County sampling point.
+- Use it to compare whether exposure patterns move together across points and years.
+- Hover over a year to read exact values.
+- Use the slider or mouse/touch gestures to zoom along the year axis.
+
+**Five-point mean chart**
+
+- Shows the highest years by simple five-point mean for the selected metric.
+- This is not an area-weighted county average.
+- For metrics not present in `county_year_means.csv`, the chart calculates the mean from the selected point-year rows.
+
+**Point × year heatmap**
+
+- Rows are selected Daymet sampling points and columns are years.
+- Cell color represents the selected metric.
+- Hover over a cell to see the exact value and unknown-label count.
+
+**NOAA baseline vs Daymet reference coordinates**
+
+- Compares NOAA station summaries against Daymet summaries at the matching station coordinates.
+- This is available for count metrics that exist in both summaries.
+- Longest observed wet-run length is not in the NOAA seasonal summary, so that comparison is intentionally not shown for the longest wet spell metric.
+
+**Sampling-point summary table**
+
+- Reports mean, minimum, maximum, and unknown-label totals for the active Daymet selection.
+
+**Exports**
+
+- **Line PNG** and **Heatmap PNG** download the active Daymet charts.
+- **Filtered CSV** downloads the active Daymet point-year rows.
+
+### 4. Daily Detail & Sensitivity
 
 This panel examines one station and year at daily resolution.
 
@@ -185,7 +239,7 @@ Both daily charts support hover tooltips, horizontal zooming, and PNG export.
 - Lists dates with an active weather event or a missing TMAX, TMIN, or PRCP value.
 - Shows the daily values and all applicable labels.
 
-### 4. Data Quality, Methods & Limitations
+### 5. Data Quality, Methods & Limitations
 
 This panel explains data completeness, cleaning, provenance, and interpretation limits.
 
@@ -213,9 +267,9 @@ The remainder of the panel documents:
 - The difference between station-screening coverage and final analysis coverage.
 - Data provenance and SHA-256 checksums.
 - Required limitations on agricultural interpretation.
-- A clearly marked placeholder for a future NOAA–Daymet comparison.
+- The status of the NOAA-vs-Daymet comparison now included in the Daymet panel.
 
-### 5. About Us
+### 6. About Us
 
 This panel lists the three project members, their proposal-defined responsibilities, verified UIUC email addresses, and the team's remote-collaboration plan. Email addresses are clickable `mailto:` links.
 
