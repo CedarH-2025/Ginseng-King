@@ -1,0 +1,25 @@
+{
+  "location_id": "marathon_north",
+  "input_sha256": "2ccd617e59d07a98fac5e4261d3efdea87ee269bc2da4a1a773c055b1667882f",
+  "thresholds": {
+    "hot_c": 30,
+    "wet_mm": 1,
+    "heavy_mm": 20,
+    "wet_run_days": 3
+  },
+  "freeze_definition": "tmin_c < 0",
+  "growing_season": "April through October",
+  "raw_rows": 8030,
+  "daily_rows": 8036,
+  "summary_rows": 44,
+  "calendar_omission_dates": [
+    "2004-12-31",
+    "2008-12-31",
+    "2012-12-31",
+    "2016-12-31",
+    "2020-12-31",
+    "2024-12-31"
+  ],
+  "missing_data_policy": "Unknown; no interpolation or dry-day substitution",
+  "wet_run_policy": "Labels calculated before year and season filtering"
+}

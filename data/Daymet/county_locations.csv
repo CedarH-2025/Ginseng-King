@@ -1,0 +1,6 @@
+location_id,latitude,longitude,county_geoid,point_type
+marathon_center,44.9,-89.65,55073,geographic_sample_not_verified_farm
+marathon_north,45.05,-89.65,55073,geographic_sample_not_verified_farm
+marathon_south,44.75,-89.65,55073,geographic_sample_not_verified_farm
+marathon_west,44.9,-90.1,55073,geographic_sample_not_verified_farm
+marathon_east,44.9,-89.35,55073,geographic_sample_not_verified_farm

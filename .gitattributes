@@ -1,0 +1,4 @@
+
+# Preserve downloaded Daymet files for SHA-256 verification
+data/Daymet/raw/** -text
+data/Daymet/geography/*.geojson -text

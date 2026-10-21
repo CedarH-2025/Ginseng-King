@@ -1,0 +1,48 @@
+{
+  "source": "Daymet Single Pixel API",
+  "location_id": "marshfield_exp_farm_reference",
+  "requested_latitude": 44.6411,
+  "requested_longitude": -90.1333,
+  "years": [
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "variables": [
+    "tmax",
+    "tmin",
+    "prcp"
+  ],
+  "source_url": "https://daymet.ornl.gov/single-pixel/api/data?lat=44.6411&lon=-90.1333&vars=tmax%2Ctmin%2Cprcp&years=2004%2C2005%2C2006%2C2007%2C2008%2C2009%2C2010%2C2011%2C2012%2C2013%2C2014%2C2015%2C2016%2C2017%2C2018%2C2019%2C2020%2C2021%2C2022%2C2023%2C2024%2C2025",
+  "downloaded_at_utc": "2026-10-21T05:11:21.250783+00:00",
+  "sha256": "fc24cc19ff038570238630c74715a6e8fff896bf62563ae48143e6e37061f2dd",
+  "daily_rows": 8030,
+  "source_header": [
+    "Latitude: 44.6411  Longitude: -90.1333",
+    "X & Y on Lambert Conformal Conic: 744798.18 270925.44",
+    "Tile: 12105",
+    "Elevation: 376 meters",
+    "All years; all variables; Daymet Software Version 4.0",
+    "How to cite: Thornton; M.M.; R. Shrestha; Y. Wei; P.E. Thornton; S-C. Kao; and B.E. Wilson. 2022. Daymet: Daily Surface Weather Data on a 1-km Grid for North America; Version 4 R1. ORNL DAAC; Oak Ridge; Tennessee; USA. https://doi.org/10.3334/ORNLDAAC/2129"
+  ],
+  "calendar_note": "365 days per year; leap years omit December 31."
+}

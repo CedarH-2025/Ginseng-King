@@ -1,0 +1,16 @@
+{
+  "reference": {
+    "daily_rows": 40180,
+    "summary_rows": 220,
+    "locations": 5,
+    "calendar_omissions": 30,
+    "calendar_and_summary_checks": "passed"
+  },
+  "county": {
+    "daily_rows": 40180,
+    "summary_rows": 220,
+    "locations": 5,
+    "calendar_omissions": 30,
+    "calendar_and_summary_checks": "passed"
+  }
+}

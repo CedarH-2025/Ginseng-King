@@ -1,0 +1,44 @@
+{
+  "source_url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer/1/query?where=STATE%3D%2755%27+AND+COUNTY%3D%27073%27&outFields=NAME%2CGEOID&returnGeometry=true&outSR=4326&f=geojson",
+  "retrieved_at_utc": "2026-10-21T05:15:04.515994+00:00",
+  "sha256": "ac18c98c7932e5bd36a12aad62bc81ef5e2d278fdefe3b4b920741983c112811",
+  "county_name": "Marathon County",
+  "county_geoid": "55073",
+  "verified_points": [
+    {
+      "location_id": "marathon_center",
+      "latitude": 44.9,
+      "longitude": -89.65,
+      "county_geoid": "55073",
+      "point_type": "geographic_sample_not_verified_farm"
+    },
+    {
+      "location_id": "marathon_north",
+      "latitude": 45.05,
+      "longitude": -89.65,
+      "county_geoid": "55073",
+      "point_type": "geographic_sample_not_verified_farm"
+    },
+    {
+      "location_id": "marathon_south",
+      "latitude": 44.75,
+      "longitude": -89.65,
+      "county_geoid": "55073",
+      "point_type": "geographic_sample_not_verified_farm"
+    },
+    {
+      "location_id": "marathon_west",
+      "latitude": 44.9,
+      "longitude": -90.1,
+      "county_geoid": "55073",
+      "point_type": "geographic_sample_not_verified_farm"
+    },
+    {
+      "location_id": "marathon_east",
+      "latitude": 44.9,
+      "longitude": -89.35,
+      "county_geoid": "55073",
+      "point_type": "geographic_sample_not_verified_farm"
+    }
+  ]
+}
